@@ -1,0 +1,31 @@
+class Solution
+{
+   
+    public static int[] calculateSpan(int price[], int n)
+    {
+        // Your code here
+        int res[] = new int[n];
+        Stack<Integer> st = new Stack<>();
+        st.push(0);   
+        
+        res[0] = 1;
+         for (int i = 1; i < n; i++) {
+               while (!st.empty() && price[st.peek()] <= price[i])
+                st.pop();
+                 
+             if(st.empty())
+                res[i]=i+1;
+            else{
+                    res[i]=i-st.peek();
+                }    
+            st.push(i);
+            }
+
+         
+        return res;                          
+    }
+}
+
+
+// question taken from GFG.
+    
